@@ -51,12 +51,12 @@ struct TitleRow: View {
 //                messagesManager.deleteMessages()
                 
                 
-                DispatchQueue.global(qos: .background).async {
-                    // Perform some background task that updates myState
-                    DispatchQueue.main.async {
-                        self.chatHistory.history = ""
-                    }
-                }
+//                DispatchQueue.global(qos: .background).async {
+//                    // Perform some background task that updates myState
+//                    DispatchQueue.main.async {
+//                        self.chatHistory.history = ""
+//                    }
+//                }
             } label: {
                 Image(systemName: "gearshape.fill")
                     .foregroundColor(.gray)
