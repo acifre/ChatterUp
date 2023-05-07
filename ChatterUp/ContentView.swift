@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var messagesManager = MessagesManager()
+    
     var messageArray = ["Hello, how are you doing?", "I'm doing great! Thanks for asking. Any plans today?", "No, just going to hang at home!"]
     
     var body: some View {
@@ -16,8 +18,8 @@ struct ContentView: View {
                 TitleRow()
                 
                 ScrollView {
-                    ForEach(messageArray, id: \.self) { text in
-                        MessageBubble(message: Message(id: "12345", text: text, received: true, timestamp: Date()))
+                    ForEach(messagesManager.messages, id: \.id) { message in
+                        MessageBubble(message: message)
                         
                     }
                 }
@@ -28,6 +30,7 @@ struct ContentView: View {
             .background(Color("Marine"))
             
             MessageField()
+                .environmentObject(messagesManager)
         }
     }
 }
