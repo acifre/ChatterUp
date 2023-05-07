@@ -22,7 +22,7 @@ class MessagesManager: ObservableObject {
     
     private
     var client: OpenAISwift?; func setup() {
-        client = OpenAISwift(authToken: UsefulValues.apiKey)
+        client = OpenAISwift(authToken: PrivateKeys.openAIKey)
     }
     
     func sendToChatGPT(text: String, completion: @escaping(String) -> Void) {

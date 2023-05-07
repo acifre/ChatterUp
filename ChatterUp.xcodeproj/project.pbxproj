@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C77DD8F2A075F6D004C7D95 /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C77DD8E2A075F6D004C7D95 /* Private.swift */; };
 		6CBEC1012A07425700683A16 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEC1002A07425700683A16 /* Message.swift */; };
 		6CBEC1032A0742B200683A16 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEC1022A0742B200683A16 /* MessageBubble.swift */; };
 		6CBEC1052A0745B900683A16 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEC1042A0745B900683A16 /* Extensions.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C77DD8E2A075F6D004C7D95 /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		6CBEC1002A07425700683A16 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		6CBEC1022A0742B200683A16 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		6CBEC1042A0745B900683A16 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C77DD8D2A075F2D004C7D95 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				6C77DD8E2A075F6D004C7D95 /* Private.swift */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		6CBEC0FF2A07424100683A16 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 		6CF058D72A07380A00027EEE /* ChatterUp */ = {
 			isa = PBXGroup;
 			children = (
+				6C77DD8D2A075F2D004C7D95 /* Private */,
 				6CBEC10F2A074DB900683A16 /* GoogleService-Info.plist */,
 				6CF058D82A07380A00027EEE /* ChatterUpApp.swift */,
 				6CF058DA2A07380A00027EEE /* ContentView.swift */,
@@ -201,6 +212,7 @@
 				6CBEC1012A07425700683A16 /* Message.swift in Sources */,
 				6CBEC1192A07569300683A16 /* UsefulValues.swift in Sources */,
 				6CBEC1122A07504600683A16 /* MessagesManager.swift in Sources */,
+				6C77DD8F2A075F6D004C7D95 /* Private.swift in Sources */,
 				6CBEC1032A0742B200683A16 /* MessageBubble.swift in Sources */,
 				6CBEC1142A07564600683A16 /* ChatBot.swift in Sources */,
 				6CF058D92A07380A00027EEE /* ChatterUpApp.swift in Sources */,
