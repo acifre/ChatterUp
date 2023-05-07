@@ -15,7 +15,7 @@ struct TitleRow: View {
     @State private var role = ""
     
     var imageURL = URL(string: "https://unsplash.com/photos/ER3BuRKBJ2g")
-    var name = "ChatGPT"
+    var name = "ChatterUp"
     var body: some View {
         HStack(spacing: 20) {
 //            AsyncImage(url: imageURL) { image in

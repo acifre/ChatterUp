@@ -24,6 +24,7 @@ struct ContentView: View {
                         withAnimation {
                             ForEach(messagesManager.messages, id: \.id) { message in
                                 MessageBubble(message: message)
+                                    .textSelection(.enabled)
                                 
                             }
                         }
