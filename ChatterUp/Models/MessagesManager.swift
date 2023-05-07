@@ -91,8 +91,8 @@ class MessagesManager: ObservableObject {
                 }
                 
             } else {
-                
-                let botMessage = Message(id: "\(UUID())", text: text, received: true, timestamp: Date())
+
+                let botMessage = Message(id: "\(UUID())", text: text.replacingOccurrences(of: "ChatGPT: ", with: ""), received: true, timestamp: Date())
                 
                     db.collection("messages").document(botMessage.id).setData( [
                         "id": botMessage.id,

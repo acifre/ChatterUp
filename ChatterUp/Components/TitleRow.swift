@@ -11,6 +11,9 @@ struct TitleRow: View {
     @EnvironmentObject var messagesManager: MessagesManager
     @EnvironmentObject var chatHistory: ChatHistory
     @State private var showActionSheet = false
+    @State private var showingPopover = false
+    @State private var role = ""
+    
     var imageURL = URL(string: "https://unsplash.com/photos/ER3BuRKBJ2g")
     var name = "ChatGPT"
     var body: some View {
@@ -29,6 +32,10 @@ struct TitleRow: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 50, height: 50)
                 .cornerRadius(50)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 50)
+                        .stroke(Color.white, lineWidth: 1)
+                }
             
             VStack(alignment: .leading) {
                 Text(name)
@@ -40,7 +47,8 @@ struct TitleRow: View {
             .frame(maxWidth: .infinity, alignment: .leading)
              
             Button {
-                messagesManager.deleteMessages()
+                showingPopover = true
+//                messagesManager.deleteMessages()
                 
                 
                 DispatchQueue.global(qos: .background).async {
@@ -50,7 +58,7 @@ struct TitleRow: View {
                     }
                 }
             } label: {
-                Image(systemName: "bubble.left.and.bubble.right.fill")
+                Image(systemName: "gearshape.fill")
                     .foregroundColor(.gray)
                     .padding(10)
                     .background(.white)
@@ -58,6 +66,12 @@ struct TitleRow: View {
             }
         }
         .padding()
+        .popover(isPresented: $showingPopover) {
+
+            ChatBotSettings()
+                .environmentObject(messagesManager)
+                .environmentObject(chatHistory)
+        }
     }
 }
 
@@ -65,6 +79,7 @@ struct TitleRow_Previews: PreviewProvider {
     static var previews: some View {
         TitleRow()
             .environmentObject(MessagesManager())
+            .environmentObject(ChatHistory())
             .background(Color("Marine"))
     }
 }
