@@ -18,7 +18,6 @@
 		6CBEC1122A07504600683A16 /* MessagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEC1112A07504600683A16 /* MessagesManager.swift */; };
 		6CBEC1142A07564600683A16 /* ChatBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEC1132A07564600683A16 /* ChatBot.swift */; };
 		6CBEC1172A07566100683A16 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6CBEC1162A07566100683A16 /* OpenAISwift */; };
-		6CBEC1192A07569300683A16 /* UsefulValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEC1182A07569300683A16 /* UsefulValues.swift */; };
 		6CF058D92A07380A00027EEE /* ChatterUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF058D82A07380A00027EEE /* ChatterUpApp.swift */; };
 		6CF058DB2A07380A00027EEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF058DA2A07380A00027EEE /* ContentView.swift */; };
 		6CF058DD2A07380A00027EEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CF058DC2A07380A00027EEE /* Assets.xcassets */; };
@@ -35,7 +34,6 @@
 		6CBEC10F2A074DB900683A16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6CBEC1112A07504600683A16 /* MessagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesManager.swift; sourceTree = "<group>"; };
 		6CBEC1132A07564600683A16 /* ChatBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBot.swift; sourceTree = "<group>"; };
-		6CBEC1182A07569300683A16 /* UsefulValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulValues.swift; sourceTree = "<group>"; };
 		6CF058D52A07380A00027EEE /* ChatterUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatterUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF058D82A07380A00027EEE /* ChatterUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterUpApp.swift; sourceTree = "<group>"; };
 		6CF058DA2A07380A00027EEE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 				6CBEC1042A0745B900683A16 /* Extensions.swift */,
 				6CBEC1002A07425700683A16 /* Message.swift */,
 				6CBEC1132A07564600683A16 /* ChatBot.swift */,
-				6CBEC1182A07569300683A16 /* UsefulValues.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,7 +207,6 @@
 				6CF058DB2A07380A00027EEE /* ContentView.swift in Sources */,
 				6CBEC1052A0745B900683A16 /* Extensions.swift in Sources */,
 				6CBEC1012A07425700683A16 /* Message.swift in Sources */,
-				6CBEC1192A07569300683A16 /* UsefulValues.swift in Sources */,
 				6CBEC1122A07504600683A16 /* MessagesManager.swift in Sources */,
 				6C77DD8F2A075F6D004C7D95 /* Private.swift in Sources */,
 				6CBEC1032A0742B200683A16 /* MessageBubble.swift in Sources */,
