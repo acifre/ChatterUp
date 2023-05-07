@@ -15,6 +15,9 @@
 		6CBEC10E2A074B6F00683A16 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6CBEC10D2A074B6F00683A16 /* FirebaseFirestoreSwift */; };
 		6CBEC1102A074DB900683A16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CBEC10F2A074DB900683A16 /* GoogleService-Info.plist */; };
 		6CBEC1122A07504600683A16 /* MessagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEC1112A07504600683A16 /* MessagesManager.swift */; };
+		6CBEC1142A07564600683A16 /* ChatBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEC1132A07564600683A16 /* ChatBot.swift */; };
+		6CBEC1172A07566100683A16 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6CBEC1162A07566100683A16 /* OpenAISwift */; };
+		6CBEC1192A07569300683A16 /* UsefulValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBEC1182A07569300683A16 /* UsefulValues.swift */; };
 		6CF058D92A07380A00027EEE /* ChatterUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF058D82A07380A00027EEE /* ChatterUpApp.swift */; };
 		6CF058DB2A07380A00027EEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF058DA2A07380A00027EEE /* ContentView.swift */; };
 		6CF058DD2A07380A00027EEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CF058DC2A07380A00027EEE /* Assets.xcassets */; };
@@ -29,6 +32,8 @@
 		6CBEC1062A0747B700683A16 /* MessageField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageField.swift; sourceTree = "<group>"; };
 		6CBEC10F2A074DB900683A16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6CBEC1112A07504600683A16 /* MessagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesManager.swift; sourceTree = "<group>"; };
+		6CBEC1132A07564600683A16 /* ChatBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBot.swift; sourceTree = "<group>"; };
+		6CBEC1182A07569300683A16 /* UsefulValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulValues.swift; sourceTree = "<group>"; };
 		6CF058D52A07380A00027EEE /* ChatterUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatterUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF058D82A07380A00027EEE /* ChatterUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatterUpApp.swift; sourceTree = "<group>"; };
 		6CF058DA2A07380A00027EEE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CBEC10C2A074B6F00683A16 /* FirebaseFirestore in Frameworks */,
+				6CBEC1172A07566100683A16 /* OpenAISwift in Frameworks */,
 				6CBEC10E2A074B6F00683A16 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,8 +59,11 @@
 		6CBEC0FF2A07424100683A16 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6CBEC1112A07504600683A16 /* MessagesManager.swift */,
 				6CBEC1042A0745B900683A16 /* Extensions.swift */,
 				6CBEC1002A07425700683A16 /* Message.swift */,
+				6CBEC1132A07564600683A16 /* ChatBot.swift */,
+				6CBEC1182A07569300683A16 /* UsefulValues.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -85,7 +94,6 @@
 				6CF058E62A0739F100027EEE /* Components */,
 				6CF058DC2A07380A00027EEE /* Assets.xcassets */,
 				6CF058DE2A07380A00027EEE /* Preview Content */,
-				6CBEC1112A07504600683A16 /* MessagesManager.swift */,
 			);
 			path = ChatterUp;
 			sourceTree = "<group>";
@@ -127,6 +135,7 @@
 			packageProductDependencies = (
 				6CBEC10B2A074B6F00683A16 /* FirebaseFirestore */,
 				6CBEC10D2A074B6F00683A16 /* FirebaseFirestoreSwift */,
+				6CBEC1162A07566100683A16 /* OpenAISwift */,
 			);
 			productName = ChatterUp;
 			productReference = 6CF058D52A07380A00027EEE /* ChatterUp.app */;
@@ -158,6 +167,7 @@
 			mainGroup = 6CF058CC2A07380A00027EEE;
 			packageReferences = (
 				6CBEC10A2A074B6F00683A16 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6CBEC1152A07566100683A16 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = 6CF058D62A07380A00027EEE /* Products */;
 			projectDirPath = "";
@@ -189,8 +199,10 @@
 				6CF058DB2A07380A00027EEE /* ContentView.swift in Sources */,
 				6CBEC1052A0745B900683A16 /* Extensions.swift in Sources */,
 				6CBEC1012A07425700683A16 /* Message.swift in Sources */,
+				6CBEC1192A07569300683A16 /* UsefulValues.swift in Sources */,
 				6CBEC1122A07504600683A16 /* MessagesManager.swift in Sources */,
 				6CBEC1032A0742B200683A16 /* MessageBubble.swift in Sources */,
+				6CBEC1142A07564600683A16 /* ChatBot.swift in Sources */,
 				6CF058D92A07380A00027EEE /* ChatterUpApp.swift in Sources */,
 				6CF058E82A073A2100027EEE /* TitleRow.swift in Sources */,
 				6CBEC1072A0747B700683A16 /* MessageField.swift in Sources */,
@@ -404,6 +416,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		6CBEC1152A07566100683A16 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -416,6 +436,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6CBEC10A2A074B6F00683A16 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		6CBEC1162A07566100683A16 /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CBEC1152A07566100683A16 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
