@@ -9,17 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var messagesManager = MessagesManager()
+    @ObservedObject var chatBot = ChatBot()
+    @ObservedObject var chatHistory = ChatHistory()
+    
     var body: some View {
         VStack {
             VStack {
                 TitleRow()
+                    .environmentObject(messagesManager)
+                    .environmentObject(chatHistory)
                 
                 ScrollViewReader { proxy in
                     ScrollView {
-                        ForEach(messagesManager.messages, id: \.id) { message in
-                            MessageBubble(message: message)
-                            
+                        withAnimation {
+                            ForEach(messagesManager.messages, id: \.id) { message in
+                                MessageBubble(message: message)
+                                
+                            }
                         }
+
                     }
                     .padding(.top, 10)
                     .background(.white)
@@ -35,8 +43,14 @@ struct ContentView: View {
             
             MessageField()
                 .environmentObject(messagesManager)
+                .environmentObject(chatBot)
+                .environmentObject(chatHistory)
+        }
+        .onAppear {
+            chatBot.setup()
         }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

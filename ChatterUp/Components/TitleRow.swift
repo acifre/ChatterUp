@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TitleRow: View {
+    @EnvironmentObject var messagesManager: MessagesManager
+    @EnvironmentObject var chatHistory: ChatHistory
+    @State private var showActionSheet = false
     var imageURL = URL(string: "https://unsplash.com/photos/ER3BuRKBJ2g")
     var name = "ChatGPT"
     var body: some View {
@@ -36,11 +39,23 @@ struct TitleRow: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
              
-            Image(systemName: "bubble.left.and.bubble.right.fill")
-                .foregroundColor(.gray)
-                .padding(10)
-                .background(.white)
-                .cornerRadius(50)
+            Button {
+                messagesManager.deleteMessages()
+                
+                
+                DispatchQueue.global(qos: .background).async {
+                    // Perform some background task that updates myState
+                    DispatchQueue.main.async {
+                        self.chatHistory.history = ""
+                    }
+                }
+            } label: {
+                Image(systemName: "bubble.left.and.bubble.right.fill")
+                    .foregroundColor(.gray)
+                    .padding(10)
+                    .background(.white)
+                    .cornerRadius(50)
+            }
         }
         .padding()
     }
@@ -49,6 +64,7 @@ struct TitleRow: View {
 struct TitleRow_Previews: PreviewProvider {
     static var previews: some View {
         TitleRow()
+            .environmentObject(MessagesManager())
             .background(Color("Marine"))
     }
 }

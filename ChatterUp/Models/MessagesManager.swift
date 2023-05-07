@@ -14,26 +14,37 @@ class MessagesManager: ObservableObject {
     @Published private(set) var messages: [Message] = []
     @Published private(set) var lastMessageId = ""
     
+    var botText = String()
+    
     let db = Firestore.firestore()
     
     init() {
         getMessages()
+//        deleteMessages()
     }
     
-    private
-    var client: OpenAISwift?; func setup() {
-        client = OpenAISwift(authToken: PrivateKeys.openAIKey)
-    }
-    
-    func sendToChatGPT(text: String, completion: @escaping(String) -> Void) {
-        client?.sendCompletion(with: text, maxTokens: 500, completionHandler: {
-            result in
-            switch result {
-            case.success(let model): let output = model.choices?.first?.text ?? ""
-                completion(output)
-            case.failure(_): break
+    func deleteMessages() {
+        for message in messages {
+            db.collection("messages").document(message.id).delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
             }
-        })
+        }
+//        db.collection("messages").addSnapshotListener { querySnapshot, error in
+//            guard let documents = querySnapshot?.documents else {
+//                print("Error fetching documents: \(String(describing: error))")
+//                return
+//            }
+//
+//            for document in documents {
+//                self.db.collection("messages").document(document.documentID).delete()
+//            }
+//        }
+        
+
     }
     
     
@@ -61,15 +72,40 @@ class MessagesManager: ObservableObject {
         }
     }
     
-    func sendMessage(text: String, completion: @escaping(String) -> Void) {
-        do {
-            
-            let newMessage = Message(id: "\(UUID())", text: text, received: false, timestamp: Date())
-            
-            try db.collection("messages").document().setData(from: newMessage)
-            
-        } catch {
-            print("Error adding message to Firestore: \(error)")
-        }
+    func sendMessage(text: String, received: Bool) {
+            if !received {
+                
+                let userRequest = Message(id: "\(UUID())", text: text, received: false, timestamp: Date())
+                
+                db.collection("messages").document(userRequest.id).setData( [
+                    "id": userRequest.id,
+                    "text": userRequest.text,
+                    "received": userRequest.received,
+                    "timestamp": Timestamp(date: userRequest.timestamp)
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
+                
+            } else {
+                
+                let botMessage = Message(id: "\(UUID())", text: text, received: true, timestamp: Date())
+                
+                    db.collection("messages").document(botMessage.id).setData( [
+                        "id": botMessage.id,
+                        "text": botMessage.text,
+                        "received": botMessage.received,
+                        "timestamp": Timestamp(date: botMessage.timestamp)
+                    ]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
+            }
     }
 }
