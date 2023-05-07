@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import OpenAISwift
 
 class MessagesManager: ObservableObject {
     @Published private(set) var messages: [Message] = []
@@ -18,6 +19,23 @@ class MessagesManager: ObservableObject {
     init() {
         getMessages()
     }
+    
+    private
+    var client: OpenAISwift?; func setup() {
+        client = OpenAISwift(authToken: UsefulValues.apiKey)
+    }
+    
+    func sendToChatGPT(text: String, completion: @escaping(String) -> Void) {
+        client?.sendCompletion(with: text, maxTokens: 500, completionHandler: {
+            result in
+            switch result {
+            case.success(let model): let output = model.choices?.first?.text ?? ""
+                completion(output)
+            case.failure(_): break
+            }
+        })
+    }
+    
     
     func getMessages() {
         db.collection("messages").addSnapshotListener { querySnapshot, error in
@@ -43,8 +61,9 @@ class MessagesManager: ObservableObject {
         }
     }
     
-    func sendMessage(text: String) {
+    func sendMessage(text: String, completion: @escaping(String) -> Void) {
         do {
+            
             let newMessage = Message(id: "\(UUID())", text: text, received: false, timestamp: Date())
             
             try db.collection("messages").document().setData(from: newMessage)
