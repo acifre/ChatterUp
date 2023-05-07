@@ -19,7 +19,7 @@ public class ChatBot: ObservableObject {
     init() {}
     private
     var client: OpenAISwift?; func setup() {
-        client = OpenAISwift(authToken: UsefulValues.apiKey)
+        client = OpenAISwift(authToken: PrivateKeys.openAIKey)
     }
     func send(text: String, completion: @escaping(String) -> Void) {
         client?.sendCompletion(with: text, maxTokens: 500, completionHandler: {
